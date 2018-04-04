@@ -43,3 +43,16 @@ nohup jstorm supervisor & </br>
 发布</br>
 把git工程打成war包</br>
 jstorm jar jstorm-core-2.2.1.jar com.github.yt.test.jstorm.sample.topology.Main</br>
+
+<pre>
+1166 [main] INFO  backtype.storm.utils.StormBoundedExponentialBackoffRetry - The baseSleepTimeMs [2000] the maxSleepTimeMs [60000] the maxRetries [5]
+1192 [main] INFO  backtype.storm.StormSubmitter - Jar not uploaded to master yet. Submitting jar...
+1197 [main] INFO  backtype.storm.StormSubmitter - Uploading topology jar jstorm-core-2.2.1.jar to assigned location: /opt/app/jstorm-2.2.1/data/nimbus/inbox/6b8f633e-9275-44a9-8c2d-e4d6313fd47a/stormjar-6b8f633e-9275-44a9-8c2d-e4d6313fd47a.jar
+1336 [main] INFO  backtype.storm.StormSubmitter - Successfully uploaded topology jar to assigned location: /opt/app/jstorm-2.2.1/data/nimbus/inbox/6b8f633e-9275-44a9-8c2d-e4d6313fd47a/stormjar-6b8f633e-9275-44a9-8c2d-e4d6313fd47a.jar
+1336 [main] INFO  backtype.storm.StormSubmitter - Submitting topology limiao_test in distributed mode with conf {"user.defined.logback.conf":"logback.xml","topology.debug":true,"exclude.jars":"","user.group":null,"topology.max.spout.pending":1,"user.name":null,"user.password":null}
+1793 [main] INFO  backtype.storm.StormSubmitter - Finished submitting topology: limiao_test
+1793 [main] INFO  com.github.yt.test.jstorm.sample.topology.Main - 远程模式启动... ...
+</pre>
+http://ip:8080/jstorm-ui-2.2.1/</br>
+
+
