@@ -1,6 +1,8 @@
 # test_case_jstorm
 程序例子+如何在centos7上搭建jstrom环境+部署jstormUI监控
 
+<h2>如果本地运行，直接运行Main.java即可；如果想远程运行并且监控，请往下看：</h2>
+</br>
 <h1>1.准备</h1>
 1.下载zookeeper,我下载的3.4.11</br>
 https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/</br>
