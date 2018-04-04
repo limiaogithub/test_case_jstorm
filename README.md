@@ -64,7 +64,7 @@ nohup jstorm supervisor & </br>
 </br>
 发布</br>
 把git工程打成war包</br>
-jstorm jar jstorm-core-2.2.1.jar com.github.yt.test.jstorm.sample.topology.Main</br>
+jstorm jar test-case-jstorm-1.0-SNAPSHOT.jar com.github.yt.test.jstorm.sample.topology.Main</br>
 
 <pre>
 1166 [main] INFO  backtype.storm.utils.StormBoundedExponentialBackoffRetry - The baseSleepTimeMs [2000] the maxSleepTimeMs [60000] the maxRetries [5]
