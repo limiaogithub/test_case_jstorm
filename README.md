@@ -36,7 +36,9 @@ export PATH=$JSTORM_HOME/bin:$PATH</br>
 source /etc/profile</br>
 修改配置文件 /opt/app/jstorm-2.2.1/conf/storm.yaml,在首行加入</br>
 <pre>
-nimbus.childopts: "-Xms512m -Xmx512m -Xmn768m -XX:SurvivorRatio=4 -XX:MaxTenuringThreshold=10 -XX:+UseConcMarkSweepGC  -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -XX:+HeapDumpOnOutOfMemoryError -XX:CMSMaxAbortablePrecleanTime=5000"
+ nimbus.childopts: "-Xmx1024m"
+ supervisor.childopts: "-Xmx512m"
+ worker.childopts: "-Xmx512m"
 
 放开如下配置
 nimbus.host: "localhost"
