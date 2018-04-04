@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <logger name="org.apache.zookeeper" level="ERROR"/>
+    <logger name="org.apache.curator" level="ERROR"/>
+    <logger name="com.netflix.curator" level="ERROR"/>
+
+    <logger name="com.navinfo.stream" additivity="false">
+        <level value="INFO"/>
+    </logger>
+    <logger name="com.alibaba.jstorm" additivity="false">
+        <level value="INFO"/>
+    </logger>
+
+    <logger name="com.alibaba.jstorm.common.metric" additivity="false">
+        <level value="INFO"/>
+    </logger>
+
+    <logger name="com.alibaba.jstorm.task.heartbeat" additivity="false">
+        <level value="WARN"/>
+    </logger>
+
+    <logger name="com.alibaba.jstorm.daemon.worker.hearbeat" additivity="false">
+        <level value="WARN"/>
+    </logger>
+
+    <logger name="com.alibaba.jstorm.daemon.nimbus.metric" additivity="false">
+        <level value="INFO"/>
+    </logger>
+
+    <logger name="com.alibaba.jstorm.metric" additivity="false">
+        <level value="INFO"/>
+    </logger>
+</configuration>
