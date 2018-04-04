@@ -1,8 +1,11 @@
 package com.github.yt.test.jstorm.sample.topology;
 
 import backtype.storm.Config;
-import backtype.storm.LocalCluster;
+import backtype.storm.StormSubmitter;
+import backtype.storm.generated.AlreadyAliveException;
+import backtype.storm.generated.InvalidTopologyException;
 import backtype.storm.topology.TopologyBuilder;
+import com.alibaba.jstorm.client.ConfigExtension;
 import com.github.yt.test.jstorm.sample.bolts.Blots1;
 import com.github.yt.test.jstorm.sample.bolts.Blots2;
 import com.github.yt.test.jstorm.sample.spouts.Spouts1;
@@ -27,8 +30,21 @@ public class Main {
         builder.setBolt("blots1", new Blots1(), 1).shuffleGrouping("spout-spouts1");
         builder.setBolt("blots2", new Blots2(), 1).shuffleGrouping("blots1");
 
-        LocalCluster cluster = new LocalCluster();
-        cluster.submitTopology("hello-topology1", conf, builder.createTopology());
-        log.info("本地模式启动... ...");
+        //远程模式
+        String topologyName = "limiao_test";
+        ConfigExtension.setUserDefinedLogbackConf(conf, "logback.xml");
+        try {
+            StormSubmitter.submitTopology(topologyName, conf, builder.createTopology());
+        } catch (AlreadyAliveException e) {
+            e.printStackTrace();
+        } catch (InvalidTopologyException e) {
+            e.printStackTrace();
+        }
+        log.info("远程模式启动... ...");
+
+        //本地模式
+//        LocalCluster cluster = new LocalCluster();
+//        cluster.submitTopology("hello-topology1", conf, builder.createTopology());
+//        log.info("本地模式启动... ...");
     }
 }
