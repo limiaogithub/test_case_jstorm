@@ -6,7 +6,6 @@ import backtype.storm.topology.IRichSpout;
 import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Values;
-import shade.storm.org.apache.commons.lang.StringUtils;
 
 import java.util.Map;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -42,8 +41,8 @@ public class Spouts1 implements IRichSpout {
 
     @Override
     public void nextTuple() {
-        String word = queue.poll();
-        if (StringUtils.isNotEmpty(word)) {
+        String word = "hi~~~~~";
+        for (int i = 0; i < 1000; i++) {
             this.collector.emit(new Values(word), word);
         }
     }
