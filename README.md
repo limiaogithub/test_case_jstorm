@@ -31,7 +31,19 @@ source /etc/profile</br>
 修改配置文件 /opt/app/jstorm-2.2.1/conf/storm.yaml,在首行加入</br>
 <pre>
 nimbus.childopts: "-Xms512m -Xmx512m -Xmn768m -XX:SurvivorRatio=4 -XX:MaxTenuringThreshold=10 -XX:+UseConcMarkSweepGC  -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -XX:+HeapDumpOnOutOfMemoryError -XX:CMSMaxAbortablePrecleanTime=5000"
+放开如下配置
+nimbus.host: "localhost"
+ 
+ui.clusters:
+   - {
+       name: "jstorm",
+       zkRoot: "/jstorm",
+       zkServers:
+           [ "localhost"],
+       zkPort: 2181,
+     }
 </pre>
+
 #mkdir ~/.jstorm  </br>
 #cp -f $JSTORM_HOME/conf/storm.yaml ~/.jstorm</br>
 nohup jstorm nimbus &  </br>
