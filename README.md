@@ -1,6 +1,8 @@
 # test_case_jstorm
 程序例子+如何在centos7上搭建jstrom环境+部署jstormUI监控
 
+<h2>如果本地运行，直接运行Main.java即可；如果想远程运行并且监控，请往下看：</h2>
+</br>
 <h1>1.准备</h1>
 1.下载zookeeper,我下载的3.4.11</br>
 https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/</br>
@@ -23,6 +25,10 @@ sh zkServer.sh start</br>
 启动成功</br>
 </br>
 </br>
+jstorm-ui-2.2.1</br>
+到jstorm-2.2.1.zip下找到jstorm-ui-2.2.1.war扔到tomcat里，启动</br>
+</br>
+</br>
 jstorm</br>
 unzip jstorm-2.2.1.zip</br>
 export JSTORM_HOME=/opt/app/jstorm-2.2.1</br>
@@ -30,7 +36,9 @@ export PATH=$JSTORM_HOME/bin:$PATH</br>
 source /etc/profile</br>
 修改配置文件 /opt/app/jstorm-2.2.1/conf/storm.yaml,在首行加入</br>
 <pre>
-nimbus.childopts: "-Xms512m -Xmx512m -Xmn768m -XX:SurvivorRatio=4 -XX:MaxTenuringThreshold=10 -XX:+UseConcMarkSweepGC  -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -XX:+HeapDumpOnOutOfMemoryError -XX:CMSMaxAbortablePrecleanTime=5000"
+ nimbus.childopts: "-Xmx1024m"
+ supervisor.childopts: "-Xmx512m"
+ worker.childopts: "-Xmx512m"
 
 放开如下配置
 nimbus.host: "localhost"
@@ -56,7 +64,7 @@ nohup jstorm supervisor & </br>
 </br>
 发布</br>
 把git工程打成war包</br>
-jstorm jar jstorm-core-2.2.1.jar com.github.yt.test.jstorm.sample.topology.Main</br>
+jstorm jar test-case-jstorm-1.0-SNAPSHOT.jar com.github.yt.test.jstorm.sample.topology.Main</br>
 
 <pre>
 1166 [main] INFO  backtype.storm.utils.StormBoundedExponentialBackoffRetry - The baseSleepTimeMs [2000] the maxSleepTimeMs [60000] the maxRetries [5]
