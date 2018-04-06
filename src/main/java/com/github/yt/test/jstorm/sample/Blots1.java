@@ -1,4 +1,4 @@
-package com.github.yt.test.jstorm.sample.bolts;
+package com.github.yt.test.jstorm.sample;
 
 import backtype.storm.task.OutputCollector;
 import backtype.storm.task.TopologyContext;
@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author limiao
+ */
 public class Blots1 implements IRichBolt {
 
     private OutputCollector collector;
@@ -27,7 +30,7 @@ public class Blots1 implements IRichBolt {
         String[] words = sentence.split(" ");
         for (String word : words) {
             word = word.trim();
-            System.out.println("word:"+word);
+            System.out.println("word:" + word);
             if (word.isEmpty()) {
                 continue;
             }

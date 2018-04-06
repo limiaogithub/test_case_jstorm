@@ -1,0 +1,1 @@
+由tuple的发射单元直接决定tuple将发射给那个bolt

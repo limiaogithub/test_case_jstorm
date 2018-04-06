@@ -1,0 +1,1 @@
+按字段分组，按数据中field值进行分组；相同field值的Tuple被发送到相同的Task

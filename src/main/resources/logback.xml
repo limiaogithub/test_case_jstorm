@@ -1,35 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <include resource="org/springframework/boot/logging/logback/base.xml"/>
 
-    <logger name="org.apache.zookeeper" level="ERROR"/>
-    <logger name="org.apache.curator" level="ERROR"/>
-    <logger name="com.netflix.curator" level="ERROR"/>
+<configuration scan="true" scanPeriod="30 seconds">
+	<appender name="A1" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss} %t] %m%n</pattern>
+		</encoder>
+	</appender>
+	<!--<logger name="org.apache.zookeeper" level="ERROR" />-->
+	<!--<logger name="org.apache.curator" level="ERROR" />-->
+	<!--<logger name="com.netflix.curator" level="ERROR" />-->
+	<!--<logger name="com.alibaba.jstorm.common.metric" level="ERROR" />-->
+	<!--<logger name="com.alibaba.jstorm.daemon.nimbus.metric" level="ERROR" />-->
+	<!--<logger name="com.alibaba.jstorm.metric" level="ERROR" />-->
+    <!--<logger name="shade.storm.org.apache.zookeeper" level="ERROR"/>-->
+    <!--<logger name="shade.storm.org.apache.curator" level="ERROR"/>-->
 
-    <logger name="com.navinfo.stream" additivity="false">
-        <level value="INFO"/>
-    </logger>
-    <logger name="com.alibaba.jstorm" additivity="false">
-        <level value="INFO"/>
-    </logger>
+	<!--&lt;!&ndash; sync client logback with jstorm.logback.xml  &ndash;&gt;-->
+    <!--<logger name="com.alibaba.jstorm.daemon.worker.hearbeat" level="ERROR"/>-->
+    <!--<logger name="com.alibaba.jstorm.task.heartbeat" level="ERROR"/>-->
+    <!--<logger name="com.alibaba.jstorm.common.metric" level="ERROR"/>-->
+	<!--<logger name="com.alibaba.jstorm.task.master.metrics" level="ERROR"/>-->
+    <!--<logger name="com.alibaba.jstorm.daemon.nimbus.metric" level="ERROR" additivity="false"/>-->
+    <!--<logger name="com.alibaba.jstorm.metric" level="ERROR"/>-->
 
-    <logger name="com.alibaba.jstorm.common.metric" additivity="false">
-        <level value="INFO"/>
-    </logger>
-
-    <logger name="com.alibaba.jstorm.task.heartbeat" additivity="false">
-        <level value="WARN"/>
-    </logger>
-
-    <logger name="com.alibaba.jstorm.daemon.worker.hearbeat" additivity="false">
-        <level value="WARN"/>
-    </logger>
-
-    <logger name="com.alibaba.jstorm.daemon.nimbus.metric" additivity="false">
-        <level value="INFO"/>
-    </logger>
-
-    <logger name="com.alibaba.jstorm.metric" additivity="false">
-        <level value="INFO"/>
-    </logger>
+	<root level="ERROR">
+		<appender-ref ref="A1"/>
+	</root>
 </configuration>

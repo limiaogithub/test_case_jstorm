@@ -90,7 +90,7 @@
                     <archive>
                         <manifest>
                             <!-- 主函数的入口 -->
-                            <mainClass>com.github.yt.test.jstorm.sample.topology.Main</mainClass>
+                            <mainClass>com.github.yt.test.jstorm.sample.MainTopology</mainClass>
                             <useUniqueVersions>false</useUniqueVersions>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>

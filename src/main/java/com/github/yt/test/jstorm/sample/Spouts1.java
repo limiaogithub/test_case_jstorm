@@ -1,4 +1,4 @@
-package com.github.yt.test.jstorm.sample.spouts;
+package com.github.yt.test.jstorm.sample;
 
 import backtype.storm.spout.SpoutOutputCollector;
 import backtype.storm.task.TopologyContext;
@@ -10,6 +10,9 @@ import backtype.storm.tuple.Values;
 import java.util.Map;
 import java.util.concurrent.LinkedBlockingQueue;
 
+/**
+ * @author limiao
+ */
 public class Spouts1 implements IRichSpout {
 
     private static final long serialVersionUID = 468766578890885L;
@@ -21,7 +24,7 @@ public class Spouts1 implements IRichSpout {
     @Override
     public void open(Map map, TopologyContext topologyContext, SpoutOutputCollector spoutOutputCollector) {
         this.collector = spoutOutputCollector;
-        queue.add("hello jstorm");
+        queue.add("hello storm");
     }
 
     @Override
@@ -41,15 +44,15 @@ public class Spouts1 implements IRichSpout {
 
     @Override
     public void nextTuple() {
-        String word = "hi~~~~~";
-        for (int i = 0; i < 1000; i++) {
+        while (!queue.isEmpty()) {
+            String word =queue.poll();
             this.collector.emit(new Values(word), word);
         }
     }
 
     @Override
     public void ack(Object o) {
-        System.out.println("Spouts1 ack");
+        System.out.println("Spouts1 ack~~~~~~~~~~~~");
     }
 
     @Override
