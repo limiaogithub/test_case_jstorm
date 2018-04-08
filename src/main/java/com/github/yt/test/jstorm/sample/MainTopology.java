@@ -16,14 +16,16 @@ public class MainTopology {
 
     private static Logger log = LoggerFactory.getLogger(MainTopology.class);
 
-    public static void main(String[] args) {
+    private static Map<String, Object> conf = new HashMap<>();
 
-        Map<String, Object> conf = new HashMap<String, Object>();
+    static {
         conf.put(Config.TOPOLOGY_DEBUG, true);
         conf.put(Config.TOPOLOGY_MAX_SPOUT_PENDING, 1);
+    }
+
+    public static void main(String[] args) {
 
         TopologyBuilder builder = new TopologyBuilder();
-
         builder.setSpout("spout1", new Spouts1(), 1);
         builder.setBolt("blots1", new Blots1(), 1).shuffleGrouping("spout1");
 
