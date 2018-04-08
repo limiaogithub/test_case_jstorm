@@ -33,15 +33,11 @@ import java.util.Map;
 /**
  * @author binyang.dby on 2016/7/21.
  */
-public class SlidingWindowTestSumBolt extends BaseWindowedBolt {
-
-    private OutputCollector collector;
-    private static Logger LOG = LoggerFactory.getLogger(SlidingWindowTestSumBolt.class);
-    private int sum = 0;
+public class SlidingWindowBolt extends BaseWindowedBolt {
 
     @Override
     public void prepare(Map stormConf, TopologyContext context, OutputCollector collector) {
-        this.collector = collector;
+
     }
 
     @Override
@@ -56,30 +52,11 @@ public class SlidingWindowTestSumBolt extends BaseWindowedBolt {
         for (Tuple tuple : tuplesInWindow) {
             str = str + tuple.getValue(0) + ",";
         }
-        System.out.println("str:"+str);
-
-//        List<Tuple> newTuples = inputWindow.getNew();
-//        List<Tuple> expiredTuples = inputWindow.getExpired();
-//
-//        LOG.debug("Events in current window: " + tuplesInWindow.size());
-//        /*
-//         * Instead of iterating over all the tuples in the window to compute the
-//         * sum, the values for the new events are added and old events are
-//         * subtracted. Similar optimizations might be possible in other
-//         * windowing computations.
-//         */
-//        for (Tuple tuple : newTuples) {
-//            sum += (int) tuple.getValue(0);
-//        }
-//        for (Tuple tuple : expiredTuples) {
-//            sum -= (int) tuple.getValue(0);
-//        }
-//        collector.emit(new Values(sum));
-//        LOG.info("#sum = " + sum);
+        System.out.println("str:" + str);
     }
 
     @Override
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
-        declarer.declare(new Fields("sum"));
+
     }
 }
