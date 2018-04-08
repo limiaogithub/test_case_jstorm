@@ -8,7 +8,6 @@ import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Values;
 
 import java.util.Map;
-import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * @author limiao
@@ -19,45 +18,41 @@ public class Spouts1 implements IRichSpout {
 
     private SpoutOutputCollector collector;
 
-    private LinkedBlockingQueue<String> queue = new LinkedBlockingQueue<>();
-
     @Override
     public void open(Map map, TopologyContext topologyContext, SpoutOutputCollector spoutOutputCollector) {
         this.collector = spoutOutputCollector;
-        queue.add("hello storm");
     }
 
     @Override
     public void close() {
-        System.out.println("Spouts1 close");
+
     }
 
     @Override
     public void activate() {
-        System.out.println("Spouts1 activate");
+
     }
 
     @Override
     public void deactivate() {
-        System.out.println("Spouts1 deactivate");
+
     }
 
     @Override
     public void nextTuple() {
-        while (!queue.isEmpty()) {
-            String word = queue.poll();
-            this.collector.emit(new Values(word), word);
+        for (int i = 0; i < 1000; i++) {
+            this.collector.emit(new Values(String.valueOf(i)), String.valueOf(i));
         }
     }
 
     @Override
     public void ack(Object o) {
-        System.out.println("Spouts1 ack~~~~~~~~~~~~");
+
     }
 
     @Override
     public void fail(Object o) {
-        System.out.println("Spouts1 fail");
+
     }
 
     @Override
@@ -67,7 +62,6 @@ public class Spouts1 implements IRichSpout {
 
     @Override
     public Map<String, Object> getComponentConfiguration() {
-        System.out.println("Spouts1 getComponentConfiguration");
         return null;
     }
 }

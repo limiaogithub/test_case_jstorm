@@ -26,7 +26,6 @@ public class MainTopology {
 
         builder.setSpout("spout1", new Spouts1(), 1);
         builder.setBolt("blots1", new Blots1(), 1).shuffleGrouping("spout1");
-        builder.setBolt("blots2", new Blots2(), 1).shuffleGrouping("blots1");
 
         //远程模式
 //        String topologyName = "limiao_test";
