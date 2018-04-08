@@ -1,4 +1,4 @@
-package com.github.yt.test.jstorm.grouping.shuffleGrouping;
+package com.github.yt.test.jstorm.grouping.all;
 
 import backtype.storm.Config;
 import backtype.storm.LocalCluster;
@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @author limiao
  */
-public class ShuffleGroupingTopology {
+public class AllGroupingTopology {
 
     private static Map<String, Object> conf = new HashMap<>();
 
@@ -22,12 +22,11 @@ public class ShuffleGroupingTopology {
     public static void main(String[] args) {
 
         TopologyBuilder builder = new TopologyBuilder();
-        builder.setSpout("spout1", new ShuffleGroupingSpouts(), 1);
-        builder.setBolt("blots1", new ShuffleGroupingBlots1(), 3).shuffleGrouping("spout1");
+        builder.setSpout("spout1", new AllGroupingSpouts(), 1);
+        builder.setBolt("blots1", new AllGroupingBlots(), 2).allGrouping("spout1");
 
         LocalCluster cluster = new LocalCluster();
-        cluster.submitTopology("hello-topology1", conf, builder.createTopology());
+        cluster.submitTopology("topology1", conf, builder.createTopology());
         System.out.println("启动成功!");
     }
-
 }

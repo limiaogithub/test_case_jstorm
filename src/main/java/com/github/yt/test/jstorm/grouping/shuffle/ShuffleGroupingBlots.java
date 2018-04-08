@@ -1,4 +1,4 @@
-package com.github.yt.test.jstorm.grouping.globalGrouping;
+package com.github.yt.test.jstorm.grouping.shuffle;
 
 import backtype.storm.task.OutputCollector;
 import backtype.storm.task.TopologyContext;
@@ -8,8 +8,10 @@ import backtype.storm.tuple.Tuple;
 
 import java.util.Map;
 
-
-public class GlobalGroupingBlots1 implements IRichBolt {
+/**
+ * @author limiao
+ */
+public class ShuffleGroupingBlots implements IRichBolt {
 
     private OutputCollector collector;
 
@@ -21,7 +23,7 @@ public class GlobalGroupingBlots1 implements IRichBolt {
     @Override
     public void execute(Tuple tuple) {
         String sentence = tuple.getString(0);
-        System.out.println("Thread:["+Thread.currentThread()+"],str:["+sentence+"]");
+        System.out.println("-------------------- Thread:[" + Thread.currentThread() + "],str:[" + sentence + "]");
         collector.ack(tuple);
     }
 

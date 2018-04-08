@@ -45,7 +45,7 @@ public class Spouts1 implements IRichSpout {
     @Override
     public void nextTuple() {
         while (!queue.isEmpty()) {
-            String word =queue.poll();
+            String word = queue.poll();
             this.collector.emit(new Values(word), word);
         }
     }

@@ -1,1 +1,0 @@
-全局分组，Tuple被分配到一个Bolt中的一个Task，实现事务性的Topology。

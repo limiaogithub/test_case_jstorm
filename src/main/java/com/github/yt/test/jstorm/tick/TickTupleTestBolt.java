@@ -46,14 +46,14 @@ public class TickTupleTestBolt implements IRichBolt {
     @Override
     public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) {
         this.metricClient = new MetricClient(topologyContext);
-        this.nonTickCounter = metricClient.registerCounter("TickTupleTest.NonTickCounter");
-        this.tickMeter = metricClient.registerMeter("TickTupleTest.TickMeter");
+        this.nonTickCounter = metricClient.registerCounter("TickTupleTopologyTest.NonTickCounter");
+        this.tickMeter = metricClient.registerMeter("TickTupleTopologyTest.TickMeter");
     }
 
     @Override
     public void execute(Tuple tuple) {
         if (TupleHelpers.isTickTuple(tuple)) {
-            System.out.println("Thread:[" + Thread.currentThread() + "],Tick! Seconds from last receive = " + (System.currentTimeMillis() - lastMills) / 1000f);
+            System.out.println("-------------------- Thread:[" + Thread.currentThread() + "],Tick! Seconds from last receive = " + (System.currentTimeMillis() - lastMills) / 1000f);
             lastMills = System.currentTimeMillis();
             tickMeter.mark();
         } else {

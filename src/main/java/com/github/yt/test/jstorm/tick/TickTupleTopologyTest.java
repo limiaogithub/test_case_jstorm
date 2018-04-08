@@ -20,7 +20,6 @@ package com.github.yt.test.jstorm.tick;
 import backtype.storm.Config;
 import backtype.storm.LocalCluster;
 import backtype.storm.topology.TopologyBuilder;
-import com.github.yt.test.jstorm.grouping.shuffleGrouping.ShuffleGroupingSpouts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,9 +29,9 @@ import org.slf4j.LoggerFactory;
  * This test is to check if the tick works correctly with the cycle which
  * is set by the user.
  */
-public class TickTupleTest {
+public class TickTupleTopologyTest {
 
-    private static Logger LOG = LoggerFactory.getLogger(TickTupleTest.class);
+    private static Logger LOG = LoggerFactory.getLogger(TickTupleTopologyTest.class);
 
     public static void main(String[] args) {
 
@@ -44,7 +43,7 @@ public class TickTupleTest {
                 .addConfiguration(Config.TOPOLOGY_TICK_TUPLE_FREQ_SECS, 2);
 
         Config config = new Config();
-        config.put(Config.TOPOLOGY_NAME, "TickTupleTest");
+        config.put(Config.TOPOLOGY_NAME, "TickTupleTopologyTest");
 
         LocalCluster cluster = new LocalCluster();
         cluster.submitTopology("hello-topology1", config, builder.createTopology());

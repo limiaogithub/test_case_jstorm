@@ -6,24 +6,24 @@
 			<pattern>[%d{yyyy-MM-dd HH:mm:ss} %t] %m%n</pattern>
 		</encoder>
 	</appender>
-	<!--<logger name="org.apache.zookeeper" level="ERROR" />-->
-	<!--<logger name="org.apache.curator" level="ERROR" />-->
-	<!--<logger name="com.netflix.curator" level="ERROR" />-->
-	<!--<logger name="com.alibaba.jstorm.common.metric" level="ERROR" />-->
-	<!--<logger name="com.alibaba.jstorm.daemon.nimbus.metric" level="ERROR" />-->
-	<!--<logger name="com.alibaba.jstorm.metric" level="ERROR" />-->
-    <!--<logger name="shade.storm.org.apache.zookeeper" level="ERROR"/>-->
-    <!--<logger name="shade.storm.org.apache.curator" level="ERROR"/>-->
+	<logger name="org.apache.zookeeper" level="ERROR" />
+	<logger name="org.apache.curator" level="ERROR" />
+	<logger name="com.netflix.curator" level="ERROR" />
+	<logger name="com.alibaba.jstorm.common.metric" level="ERROR" />
+	<logger name="com.alibaba.jstorm.daemon.nimbus.metric" level="ERROR" />
+	<logger name="com.alibaba.jstorm.metric" level="ERROR" />
+	<logger name="shade.storm.org.apache.zookeeper" level="ERROR"/>
+	<logger name="shade.storm.org.apache.curator" level="ERROR"/>
 
-	<!--&lt;!&ndash; sync client logback with jstorm.logback.xml  &ndash;&gt;-->
-    <!--<logger name="com.alibaba.jstorm.daemon.worker.hearbeat" level="ERROR"/>-->
-    <!--<logger name="com.alibaba.jstorm.task.heartbeat" level="ERROR"/>-->
-    <!--<logger name="com.alibaba.jstorm.common.metric" level="ERROR"/>-->
-	<!--<logger name="com.alibaba.jstorm.task.master.metrics" level="ERROR"/>-->
-    <!--<logger name="com.alibaba.jstorm.daemon.nimbus.metric" level="ERROR" additivity="false"/>-->
-    <!--<logger name="com.alibaba.jstorm.metric" level="ERROR"/>-->
+	<!-- sync client logback with jstorm.logback.xml  -->
+	<logger name="com.alibaba.jstorm.daemon.worker.hearbeat" level="ERROR"/>
+	<logger name="com.alibaba.jstorm.task.heartbeat" level="ERROR"/>
+	<logger name="com.alibaba.jstorm.common.metric" level="ERROR"/>
+	<logger name="com.alibaba.jstorm.task.master.metrics" level="ERROR"/>
+	<logger name="com.alibaba.jstorm.daemon.nimbus.metric" level="ERROR" additivity="false"/>
+	<logger name="com.alibaba.jstorm.metric" level="ERROR"/>
 
-	<root level="ERROR">
+	<root level="INFO">
 		<appender-ref ref="A1"/>
 	</root>
 </configuration>
